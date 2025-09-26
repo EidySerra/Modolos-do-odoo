@@ -1,3 +1,7 @@
+![Header](https://capsule-render.vercel.app/api?type=waving&height=130&color=gradient&customColorList=20&section=header)
+
+<h2 align="center">&lt;Olá, eu sou a Edvaldo Serra/&gt;</h2>
+
 # odoo-ao-partner-training
 Treinamento Odoo para parceiros TICBLAC
 
