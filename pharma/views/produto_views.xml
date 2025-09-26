@@ -1,0 +1,48 @@
+<odoo>
+    <!-- Vista tree-->
+    <record id="product_view_tree" model="ir.ui.view">
+        <field name="name">pharma.product.tree</field>
+        <field name="model">pharma.product</field>
+        <field name="arch" type="xml">
+            <tree string="Produtos">
+                <field name="name"/>
+                <field name="id_supplier"/>
+                <field name="qty"/>
+                <field name="price"/>
+                <field name="date_fb"/>
+                <field name="date_exp"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista form -->
+    <record id="product_views_form" model="ir.ui.view">
+        <field name="name">pharma.product.form</field>
+        <field name="model">pharma.product</field>
+        <field name="arch" type="xml">
+            <form string="Produtos">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="id_supplier"/>
+                        <field name="qty"/>
+                        <field name="price"/>
+                        <field name="date_fb"/>
+                        <field name="date_exp"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <!--Vista de uma acção-->
+    <record id="action_product" model="ir.actions.act_window">
+        <field name="name">Produto</field>
+        <field name="res_model">pharma.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--menu-->
+    <menuitem id="menu_product_root" name="Produtos"/>
+    <menuitem id="menu_product" name="Produto" parent="menu_product_root" action="action_product"/>
+</odoo>

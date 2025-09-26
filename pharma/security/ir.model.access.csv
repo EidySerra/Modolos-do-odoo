@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_pharma_product,access.pharma.product,model_pharma_product,,1,1,1,1
+access_pharma_supplier,access.pharma.supplier,model_pharma_supplier,,1,1,1,1
+
+

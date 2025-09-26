@@ -1,0 +1,72 @@
+/* ================================
+ESTILO PARA FORM VIEW
+================================ */
+.o_form_view .o_form_sheet_bg {
+background-color: #f9f9f9;
+}
+.o_form_view .o_form_sheet {
+border: 2px solid #007bff;
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.o_form_view .o_form_label {
+font-weight: bold;
+color: #0056b3;
+}
+.o_form_view input.o_input {
+border: 1px solid #ccc;
+border-radius: 6px;
+padding: 5px 8px;
+transition: 0.3s;
+}
+.o_form_view input.o_input:focus {
+border-color: #007bff;
+box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+/* ================================
+ESTILO PARA TREE VIEW (Lista)
+================================ */
+.o_list_view table.o_list_table tr {
+background-color: #ffffff;
+transition: background-color 0.2s;
+}
+.o_list_view table.o_list_table tr:hover {
+background-color: #e3f2fd;
+}
+.o_list_view table.o_list_table td[data-name="name"] {
+font-weight: bold;
+color: darkblue;
+}
+.o_list_view table.o_list_table td[data-name="email"] {
+color: #d32f2f;
+}
+.o_list_view table.o_list_table td[data-name="phone"] {
+color: green;
+font-style: italic;
+}/* ================================
+ESTILO PARA KANBAN VIEW
+================================ */
+.o_kanban_example .o_kanban_card {
+background: #ffffff;
+border: 1px solid #ccc;
+border-radius: 12px;
+padding: 12px;
+margin: 8px;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+transition: 0.3s;
+}
+.o_kanban_example .o_kanban_card:hover {
+transform: scale(1.02);
+border-color: #007bff;
+}
+.o_kanban_example strong {
+font-size: 16px;
+color: #007bff;
+}
+.o_kanban_example span {
+display: block;
+margin: 3px 0;
+font-size: 13px;
+color: #333;
+}

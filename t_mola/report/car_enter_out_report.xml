@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Definir o relatório -->
+    <report
+            id="action_report_car_enter_out"
+            model="car.enter.out"
+            string="Relatório de Movimentação"
+            report_type="qweb-pdf"
+            name="t_mola.report_car_enter_out_template"
+            file="t_mola.report_car_enter_out_template"
+            print_report_name="'Relatorio_Movimento_' + object.name"
+    />
+
+
+    <!-- Template do relatório report_car_enter_out_template -->
+    <template id="report_car_enter_out_template">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <main>
+                        <h3 style="text-align:center; margin-bottom:15px; color:#2C3E50;">
+                            RELATORIO DE MOVIMENTO DE VEICULOS
+                        </h3>
+
+                        <!-- CSS customizado -->
+                        <style>
+                            .styled-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 13px;
+                            font-family: 'Arial', sans-serif;
+                            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                            border-radius: 8px;
+                            overflow: hidden;
+                            margin-bottom: 20px;
+                            }
+                            .styled-table thead tr {
+                            background-color: #2C3E50;
+                            color: #ffffff;
+                            text-align: center;
+                            font-weight: bold;
+                            }
+                            .styled-table th,
+                            .styled-table td {
+                            padding: 8px 10px;
+                            border: 1px solid #ddd;
+                            text-align: center;
+                            }
+                            .styled-table tbody tr:nth-child(even) {
+                            background-color: #f9f9f9;
+                            }
+                            .styled-table tbody tr:nth-child(odd) {
+                            background-color: #ffffff;
+                            }
+                            .note-box {
+                            margin-top: 20px;
+                            padding: 10px;
+                            border-left: 4px solid #2C3E50;
+                            background: #f8f8f8;
+                            font-size: 12px;
+                            font-style: italic;
+                            }
+                            .report-footer {
+                            margin-top: 20px;
+                            text-align: right;
+                            font-size: 12px;
+                            font-weight: bold;
+                            color: #2C3E50;
+                            }
+                        </style>
+
+                        <!-- Tabela -->
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>Referência</th>
+                                    <th>Cliente</th>
+                                    <th>Veículo</th>
+                                    <th>Marca</th>
+                                    <th>Matrícula</th>
+                                    <th>Status</th>
+                                    <th>Data Entrada</th>
+                                    <th>Data Saída</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span t-field="doc.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.partner_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.car_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.marca"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.matricula"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.status"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.entry_date" t-options='{"format": "dd/MM/yyyy HH:mm"}'/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.exit_date" t-options='{"format": "dd/MM/yyyy HH:mm"}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Observações -->
+                        <div class="note-box">
+                            <strong>Observações:</strong>
+                            <p>
+                                <span t-field="doc.note"/>
+                            </p>
+                        </div>
+                    </main>
+                </div>
+            </t>
+
+            <!-- Rodapé com total de registos -->
+            <div class="report-footer">
+                Total de Registos:
+                <t t-esc="len(docs)"/>
+            </div>
+        </t>
+    </template>
+
+</odoo>
+
+

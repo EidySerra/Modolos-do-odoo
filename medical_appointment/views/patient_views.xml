@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- Vista form -->
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">medical.patient.form</field>
+        <field name="model">medical.patient</field>
+        <field name="arch" type="xml">
+            <form string="Paciente">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="birth_day"/>
+                            <field name="gander"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Consultas">
+                            <field name="appointment_ids" context="{'default_patient_id': active_id}">
+                                <tree>
+                                    <field name="appointment_date"/>
+                                    <field name="doctor_id"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <!--viata Kanban-->
+    <record id="view_patient_kanban" model="ir.ui.view">
+        <field name="name">medical.patient.kanban</field>
+        <field name="model">medical.patient</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_example" create="true" quick_create="false">
+                <field name="name"/>
+                <field name="birth_day"/>
+                <field name="gander"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="address"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+                            <strong>🏷️ Paciente:
+                                <field name="name"/>
+                            </strong>
+                            <br/>
+                            <span>📅 Data de nascimento:
+                                <field name="birth_day"/>
+                            </span>
+                            <br/>
+                            <span>🚹 Genero:
+                                <field name="gander"/>
+                            </span>
+                            <br/>
+                            <span>📞 Telefone:
+                                <field name="phone"/>
+                            </span>
+                            <br/>
+                            <span>📧 Email:
+                                <field name="email"/>
+                            </span>
+                            <br/>
+                            <span>🏠 Endereço:
+                                <field name="address"/>
+                            </span>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Vista tree -->
+    <record id="view_patient_tree" model="ir.ui.view">
+        <field name="name">medical.patient.tree</field>
+        <field name="model">medical.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Pacientes">
+                <field name="name"/>
+                <field name="birth_day"/>
+                <field name="gander"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="address"/>
+            </tree>
+        </field>
+    </record>
+
+     <!--viata Kanban-->
+    <record id="view_doctor_kanban" model="ir.ui.view">
+        <field name="name">medical.doctor.kanban</field>
+        <field name="model">medical.doctor</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_example" create="true" quick_create="false">
+                <field name="name"/>
+                <field name="speciality"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+                            <strong>🏷️ Doctor:
+                                <field name="name"/>
+                            </strong>
+                            <br/>
+                            <span>🦴 Especialidade:
+                                <field name="speciality"/>
+                            </span>
+                            <br/>
+                            <span>📞 Telefone:
+                                <field name="phone"/>
+                            </span>
+                            <br/>
+                            <span>📧 Email:
+                                <field name="email"/>
+                            </span>
+                            <br/>
+                            <span>📄 Estado da consulta:
+                                <field name="active"/>
+                            </span>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="action_patient" model="ir.actions.act_window">
+        <field name="name">Pacientes</field>
+        <field name="res_model">medical.patient</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+    <!-- Submenu -->
+    <menuitem id="menu_root" name="Medical Apointments" sequence="0"/>
+    <menuitem id="menu_patient" name="Pacientes" parent="menu_root" sequence="1"
+              action="action_patient"/>
+</odoo>

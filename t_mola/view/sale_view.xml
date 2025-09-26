@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_view_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <br/>
+                <field name="marca"/>
+                <field name="matricula"/>
+                <field name="color"/>
+                <field name="km"/>
+                <field name="chassi"/>
+
+                <!-- Notebook com abas -->
+                <notebook>
+                    <!-- Aba das movimentações -->
+                    <page string="Movimentações">
+                        <field name="movimentacoes_ids">
+                            <tree editable="bottom">
+                                <field name="status"/>
+                                <field name="entry_date"/>
+                                <field name="exit_date"/>
+                                <field name="note"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>

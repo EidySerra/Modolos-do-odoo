@@ -1,0 +1,71 @@
+/* Prefixo para evitar conflitos */
+:root {
+  --tmola-primary: #2C3E50; /* cor principal */
+  --tmola-accent: #1abc9c;
+  --tmola-muted: #7f8c8d;
+  --tmola-card-bg: #ffffff;
+  --tmola-border: #e6e9ee;
+}
+
+/* Aplicar cor principal no topbar do Odoo */
+.o_main_navbar {
+  background-color: var(--tmola-primary) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+}
+.o_main_navbar .o_menu_brand {
+  color: #fff !important;
+  font-weight: 700;
+}
+
+/* Botões primários */
+.btn.btn-primary, .btn-primary {
+  background-color: var(--tmola-accent) !important;
+  border-color: var(--tmola-accent) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 6px rgba(26, 188, 156, 0.18);
+  border-radius: 8px;
+}
+
+/* Form fields card look */
+.o_form_sheet_bg {
+  background: linear-gradient(180deg, #fbfdff, #f6f9fb);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+/* Labels e inputs */
+.o_form_label {
+  color: var(--tmola-primary);
+  font-weight: 600;
+}
+.o_field_widget {
+  border-radius: 6px;
+}
+
+/* Kanban cards (dar mais "vida") */
+.o_kanban_record {
+  background: var(--tmola-card-bg);
+  border: 1px solid var(--tmola-border);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.o_kanban_record:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Tree view header */
+.o_list_view thead th {
+  background-color: var(--tmola-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Pequenos ajustes para PDF e QWeb */
+.page .styled-table { /* caso use styled-table no QWeb */
+  font-family: 'Arial', sans-serif;
+  border-radius: 6px;
+  overflow: hidden;
+}

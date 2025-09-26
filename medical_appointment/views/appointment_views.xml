@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!--Modelo de vista form-->
+    <record id="view_appointment_form" model="ir.ui.view">
+        <field name="name">medical.appointment.form</field>
+        <field name="model">medical.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Consultas">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
+                            <field name="appointment_date"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Modelo de vista tree-->
+    <record id="view_appointment_tree" model="ir.ui.view">
+        <field name="name">medical.appointment.tree</field>
+        <field name="model">medical.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="Consultas">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="appointment_date"/>
+                <field name="description"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+     <!--viata Kanban-->
+    <record id="view_appointment_kanban" model="ir.ui.view">
+        <field name="name">medical.appointment.kanban</field>
+        <field name="model">medical.appointment</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_example" create="true" quick_create="false">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="appointment_date"/>
+                <field name="description"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+                            <strong>🏷Consulta de Paciente:
+                                <field name="patient_id"/>
+                            </strong>
+                            <br/>
+                            <span>👨‍⚕️ Doctor:
+                                <field name="doctor_id"/>
+                            </span>
+                            <br/>
+                            <span>📅 Data da consulta:
+                                <field name="appointment_date"/>
+                            </span>
+                            <br/>
+                            <span>📄 Descrição:
+                                <field name="description"/>
+                            </span>
+                            <br/>
+                            <span>🔵 Estado:
+                                <field name="state"/>
+                            </span>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+     <!-- vista de Modelo de acção-->
+    <record id="action_appointment" model="ir.actions.act_window">
+        <field name="name">Consultas</field>
+        <field name="res_model">medical.appointment</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <!-- Menu de cima-->
+    <menuitem id="menu_root" name="Medical Appointment"/>
+    <menuitem id="menu_appointment" name="Consultas" parent="menu_root" sequence="2" action="action_appointment"/>
+
+</odoo>
+

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista Form
+    <record id="car_enter_out_form" model="ir.ui.view">
+        <field name="name">car.enter.out.form</field>
+        <field name="model">car.enter.out</field>
+        <field name="arch" type="xml">
+            <form string="Entrada e Saída de Carro">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="car_id"/>
+                        <field name="partner_id" readonly="1"/>
+                    </group>
+                    <group string="Informações do Carro">
+                        <field name="marca" readonly="1"/>
+                        <field name="matricula" readonly="1"/>
+                        <field name="color" readonly="1"/>
+                        <field name="km" readonly="1"/>
+                        <field name="chassi" readonly="1"/>
+                    </group>
+                    <group string="Movimento">
+                        <field name="mv"/>
+                        <field name="data"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    -->
+
+    <record id="car_enter_out_form" model="ir.ui.view">
+        <field name="name">car.enter.out.form</field>
+        <field name="model">car.enter.out</field>
+        <field name="arch" type="xml">
+            <form string="Movimentação de Veículos">
+
+                <header>
+                    <!-- Botão Entrada -->
+                    <button name="action_entry"
+                            type="object"
+                            string="Marcar Entrada"
+                            class="btn-secondary"
+                            attrs="{'invisible': [('status', '=', 'entry')]}"/>
+
+                    <!-- Botão Em Serviço -->
+                    <button name="action_in_service"
+                            type="object"
+                            string="Marcar Em Serviço"
+                            class="btn-primary"
+                            attrs="{'invisible': [('status', '!=', 'entry')]}"/>
+
+                    <!-- Botão Saída -->
+                    <button name="action_exit"
+                            type="object"
+                            string="Registrar Saída"
+                            class="btn-success"
+                            attrs="{'invisible': [('status', '!=', 'in_service')]}"/>
+
+
+                    <!-- Botão Confirmar por Email -->
+                    <button name="action_confirm_email"
+                            type="object"
+                            string="Confirmar por Email"
+                            class="btn-info"
+                            attrs="{'invisible': [('status', 'in', ['confirmed','cancelled'])]}"/>
+
+                    <!-- Botão Confirmar -->
+                    <button name="action_confirm"
+                            type="object"
+                            string="Confirmar"
+                            class="btn-success"
+                            attrs="{'invisible': [('status', 'in', ['confirmed','cancelled'])]}"/>
+
+                    <!-- Botão Cancelar -->
+                    <button name="action_cancel"
+                            type="object"
+                            string="Cancelar"
+                            class="btn-danger"
+                            attrs="{'invisible': [('status', '=', 'cancelled')]}"/>
+
+                    <!-- Barra de status -->
+                    <field name="status" widget="statusbar"
+                           statusbar_visible="entry,in_service,exit,confirmed,cancelled"/>
+
+                    <!-- Botão -->
+                    <button name="%(action_report_car_enter_out)d"
+                            string="📄 Gerar Relatório"
+                            type="action"
+                            class="btn-secondary"/>
+
+                </header>
+
+                <sheet>
+                    <group col="2">
+                        <field name="name"/>
+                        <field name="car_id"/>
+                        <field name="partner_id"/>
+                    </group>
+
+                    <!-- Notebook com abas -->
+                    <notebook>
+                        <!-- Aba do veículo -->
+                        <page string="Informacões Veículo">
+                            <group col="2">
+                                <field name="marca"/>
+                                <field name="matricula"/>
+                                <field name="color"/>
+                                <field name="km"/>
+                                <field name="chassi"/>
+                            </group>
+                        </page>
+
+                        <!-- Aba de datas -->
+                        <page string="Datas">
+                            <group col="2">
+                                <field name="entry_date"/>
+                                <field name="exit_date"/>
+                            </group>
+                        </page>
+
+                        <!-- Aba de observações -->
+                        <page string="Observações">
+                            <group>
+                                <field name="note"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Tree -->
+    <record id="car_enter_out_tree" model="ir.ui.view">
+        <field name="name">car.enter.out.tree</field>
+        <field name="model">car.enter.out</field>
+        <field name="arch" type="xml">
+            <tree string="Entradas e Saídas de Carros">
+                <field name="name" readonly="1"/>
+                <field name="car_id"/>
+                <field name="partner_id"/>
+                <field name="marca"/>
+                <field name="matricula"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Kanban -->
+    <record id="car_enter_out_kanban" model="ir.ui.view">
+        <field name="name">car.enter.out.kanban</field>
+        <field name="model">car.enter.out</field>
+        <field name="arch" type="xml">
+            <kanban create="true" quick_create="false" class="o_kanban_example">
+                <field name="name" readonly="1"/>
+                <field name="car_id"/>
+                <field name="partner_id"/>
+                <field name="marca"/>
+                <field name="matricula"/>
+                <field name="status"/>
+                <field name="note"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+                            <strong>
+                                🚗
+                                <field name="car_id"/>
+                                <br/>
+                            </strong>
+                            <br/>
+                            <span>👤 Cliente:
+                                <field name="partner_id"/>
+                            </span>
+                            <br/>
+                            <span>🏷 Marca:
+                                <field name="marca"/>
+                            </span>
+                            <br/>
+                            <span>🔢 Matrícula:
+                                <field name="matricula"/>
+                            </span>
+                            <br/>
+                            <span>📌 Movimento:
+                                <field name="status"/>
+                            </span>
+                            <br/>
+                            <span>📝
+                                <field name="note"/>
+                            </span>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Ação -->
+    <record id="action_car_enter_out" model="ir.actions.act_window">
+        <field name="name">Entrada e Saída de Carro</field>
+        <field name="res_model">car.enter.out</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- Menu principal -->
+    <menuitem id="menu_car_root"
+              name="Gestão de Oficina"
+              sequence="0"/>
+
+    <!-- Submenu -->
+    <menuitem id="menu_car_enter_out"
+              name="Entradas/Saídas de Carros"
+              parent="menu_car_root"
+              action="action_car_enter_out"
+              sequence="1"/>
+</odoo>

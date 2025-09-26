@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_odoo_implementation_client,access.odoo.implementation.client,model_odoo_implementation_client,,1,1,1,1
+access_odoo_implementation_solution,access.odoo.implementation.solution,model_odoo_implementation_solution,,1,1,1,1
+
+

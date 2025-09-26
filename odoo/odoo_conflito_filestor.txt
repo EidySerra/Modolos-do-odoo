@@ -1,0 +1,9 @@
+# correr no odoo shell
+attachments = env['ir.attachment'].search([])
+count_deleted = 0
+for att in attachments:
+    try:
+        att._file_read()
+    except Exception:
+        att.unlink()
+        count_deleted += 1

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="venda_view_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                    <!-- Aba das movimentações -->
+                    <page string="Aprovação">
+                        <group>
+                            <field name="approval_date"/>
+                        </group>
+                    </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!--Acção  que abre a lista de pedidos em estado 'draft'-->
+    <record id="action_sale_order_draft" model="ir.actions.act_window">
+        <field name="name">Pedidos Pendentes</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state','=','draft')]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Submenu em Vendas > Pedidos > Pedidos Pendentes  -->
+    <menuitem id="menu_sale_order_draft"
+              name="Pedidos Pendentes"
+              parent="sale.sale_menu_root"
+              action="action_sale_order_draft"
+              sequence="3"/>
+</odoo>
+  <!--/home/edvaldo/Documentos/odoo-ao-partner-training-main/odoo#-->
