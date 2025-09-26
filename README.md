@@ -1,18 +1,9 @@
 ![Header](https://capsule-render.vercel.app/api?type=waving&height=130&color=gradient&customColorList=20&section=header)
 
-<h2 align="center">&lt;Olá, eu sou a Edvaldo Serra/&gt;</h2>
+<h2 align="center">&lt;Olá, eu sou o Edvaldo Developer odoo/&gt;</h2>
 
-# odoo-ao-partner-training
-Treinamento Odoo para parceiros TICBLAC
 
-# Script Odoo 18 + ubuntu 22.04 + Fail2Ban
-chmod +x install-odoo18.sh
-
-sudo ./install-odoo18.sh
-
-<h1>🚀<strong>Customizações e Estudos com Odoo</strong></h1>
-
-<strong>Este repositório reúne exercícios, estudos e customizações que venho desenvolvendo no Odoo, fruto de minha jornada de aprendizado e prática com a plataforma.</strong>
+<h1>🚀<strong>Estudos Odoo</strong></h1>
 
 <strong> Ao longo do tempo, explorei diversos pontos importantes do ecossistema do Odoo, incluindo:</strong>
 
@@ -41,9 +32,6 @@ PostgreSQL </br>
 QWeb (para relatórios)</br>
 CSS / Frameworks de UI </br>
 
-<h1>✨Sobre o Projeto</h1>
+Treinamento Odoo para parceiros TICBLAC
 
-Este não é um produto final, mas sim um espaço de estudo e experimentação.
-Aqui registro ideias, testes e melhorias, sempre com foco em aprender, compartilhar conhecimento e evoluir como desenvolvedor Odoo.
 
-👉 Sinta-se à vontade para explorar o código, deixar sugestões ou contribuir.
