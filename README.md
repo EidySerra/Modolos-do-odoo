@@ -6,29 +6,40 @@ chmod +x install-odoo18.sh
 
 sudo ./install-odoo18.sh
 
-# Odoo Partner Training - Custom Modules
+<h1>🚀<strong>Customizações e Estudos com Odoo</strong></h1>
 
-Este repositório faz parte de um projeto de aprendizado e prática no desenvolvimento de módulos personalizados no **Odoo**, um dos ERPs de código aberto mais utilizados no mundo.
+<strong>Este repositório reúne exercícios, estudos e customizações que venho desenvolvendo no Odoo, fruto de minha jornada de aprendizado e prática com a plataforma.</strong>
 
-## 📦 Estrutura do Projeto
+<strong> Ao longo do tempo, explorei diversos pontos importantes do ecossistema do Odoo, incluindo:</strong>
 
-O projeto está dividido em diversos módulos customizados:
+📂 Modelos (Models) – Criação de tabelas personalizadas com models.Model.
 
-- `bweguda/`
-- `edvaldo/`
-- `medical_appointment/`
+🖼️ Vistas (Views) – Construção de form, tree e kanban, além de heranças usando XPath.
 
-Cada pasta representa um módulo independente com suas próprias views, modelos e regras de segurança.
+🧩 Menus e Submenus – Estruturação de navegação no sistema, criando menus personalizados como Pedidos Pendentes.
 
-## 🔧 Funcionalidades Desenvolvidas
+🔑 IDs automáticos e Sequências – Implementação de campos automáticos para rastrear movimentações e registros.
 
-### 📄 Customização da View de Pedido de Venda (`sale.order`)
+📝 Relatórios em PDF – Geração e estilização de relatórios customizados.
 
-No módulo `bweguda`, foi realizada a herança da view padrão de pedidos de venda para adicionar uma nova aba chamada **"Aprovação"**, contendo o campo `approval_date`.
+🎨 Estilização e Frontend – Aplicação de CSS e integração de frameworks para personalizar a interface.
 
-```xml
-<page string="Aprovação">
-  <group>
-    <field name="approval_date"/>
-  </group>
-</page>
+⚙️ Customização de Módulos – Adaptação de módulos nativos, como Sales (sale), para necessidades específicas.
+
+📌 Objetivo: Este repositório serve como um laboratório de práticas e anotações de aprendizado, documentando minha evolução com o Odoo e registrando soluções que podem ajudar em projetos futuros.
+
+<h1>🔧Tecnologias Utilizadas</h1>
+
+Odoo v15+ </br>
+Python     </br>
+XML      </br>
+PostgreSQL </br>
+QWeb (para relatórios)</br>
+CSS / Frameworks de UI </br>
+
+<h1>✨Sobre o Projeto</h1>
+
+Este não é um produto final, mas sim um espaço de estudo e experimentação.
+Aqui registro ideias, testes e melhorias, sempre com foco em aprender, compartilhar conhecimento e evoluir como desenvolvedor Odoo.
+
+👉 Sinta-se à vontade para explorar o código, deixar sugestões ou contribuir.
